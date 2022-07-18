@@ -69,11 +69,7 @@ void QuickTranslate::slotTranslate(const QString &words)
 void QuickTranslate::slotNetTranslated(const QString &result)
 {
     emit sigResult(result);
-
-    if((!srcStr_.contains(' ')) && (result.length() > 0))                   //只记录单词
-    {
-       mStorage_->addStorage(srcStr_, result);
-    }
+    mStorage_->addStorage(srcStr_, result);
 }
 
 void QuickTranslate::onAddWord(const QString &word, const QString &explanation)

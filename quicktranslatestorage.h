@@ -5,6 +5,7 @@
 #include <map>
 
 class QuickFile;
+class QuickTranslateDicModel;
 
 class QuickTranslateStorage:public QObject
 {
@@ -22,7 +23,6 @@ public:
 public:
     static QuickTranslateStorage* getInstance();
     void initLocalDictionary();
-    std::vector<std::map<QByteArray, Context>::iterator> getLocalDictionnaryVector(){return dicArray_;};
     QString find(const QString word);
     QString load(int pos, int len);
     void addStorage(const QString& word, const QString& explanation);
@@ -37,22 +37,24 @@ private:
     Context byteArrayToContext(const QByteArray& bArray, int offset);
     QByteArray contextToByteArray(const Context& context);
     void checkSyncStatus();
+    bool isSingleWord(const QString&);
 
     QuickTranslateStorage(QObject* parent = nullptr);
     void setParent(QObject*){};
 
 signals:
     void SigDictionaryReady(int);
-    void SigAddNewWord();
+    void SigAddNewWord(std::map<QByteArray, Context>::const_iterator);
 
 private:
     std::map<QByteArray, Context>        dic_;
-    std::vector<std::map<QByteArray, Context>::iterator>    dicArray_;
     QuickFile*        wordFile_;
     QuickFile*        explanationFile_;
     QuickFile*        contextFile_;
     //QuickFile*        logFile_;
 
+private:
+    friend QuickTranslateDicModel;
 };
 
 class TestClass:public QObject

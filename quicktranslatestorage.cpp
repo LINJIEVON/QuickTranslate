@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QVector>
+#include <QRegExp>
 #include <QtConcurrent/QtConcurrentRun>
 
 
@@ -16,8 +17,7 @@
 
 QuickTranslateStorage::QuickTranslateStorage(QObject *parent):
     QObject(parent),
-    dic_(),
-    dicArray_()
+    dic_()
 {
 #ifdef QT_NO_DEBUG
     QDir dir(PATH);
@@ -66,33 +66,26 @@ void QuickTranslateStorage::initLocalDictionary()
 {
     checkSyncStatus();                                                  //（如果存在）修正之前word,explanation,context文件不同步问题
 
-    QList<QByteArray> wordlist(wordFile_->readAllBytes().split(' '));
     QByteArray contextBytes(contextFile_->readAllBytes());
-
-    //QByteArray explaBytes = explanationFile_->readAllBytes();
-
-    if(wordlist.length() <= 1)
-    {
-        emit SigDictionaryReady(-1);
-        return;
-    }
 
     int step = sizeof(Context);
     int count = contextBytes.length() / step;
     qDebug()<<"step: "<<step<<","
            <<"count: "<<count;
 
+    if(count <= 0)
+    {
+        return;
+    }
+
+    QByteArray wordsBytes(wordFile_->readAllBytes());
     for(int i = 0; i < count; i++)
     {
         Context tcnx;
         setContext(contextBytes, i*step, tcnx);
 
         //dic_.emplace(wordlist[i], tcnx);
-        auto pair(dic_.emplace(wordlist[i], tcnx));
-        if(pair.second)
-        {
-            dicArray_.emplace_back(pair.first);
-        }
+        dic_.emplace(QByteArray(wordsBytes.data() + tcnx.wordIndex_, tcnx.wordLen_), tcnx);
     }
     emit SigDictionaryReady(0);
 }
@@ -115,6 +108,8 @@ QString QuickTranslateStorage::find(const QString word)
     setByteArray(tcnx, wBytes);
     contextFile_->writeByteArray(wBytes, wBytes.length(), tcnx.contextIndex_);
 
+    emit SigAddNewWord(dic_.end());
+
     return QString(rBytes);
 }
 
@@ -128,10 +123,14 @@ QString QuickTranslateStorage::load(int pos, int len)
 
 void QuickTranslateStorage::addStorage(const QString &word, const QString &explanation)
 {
+    if(!isSingleWord(word) || explanation.length() <= 0)
+    {
+        return;
+    }
+
     Context tcnx;
 
-    QString newWord = word + ' ';                      //添加一个空格，方便解析
-    QByteArray wordBytes = newWord.toLocal8Bit();
+    QByteArray wordBytes = word.toLocal8Bit();
     std::string explanStr = explanation.toStdString();
 
     tcnx.wordLen_ = wordBytes.length();
@@ -141,22 +140,19 @@ void QuickTranslateStorage::addStorage(const QString &word, const QString &expla
     tcnx.contextIndex_ = contextFile_->size();
     tcnx.frequency_ = 1;
 
-
-
     wordFile_->writeRawBytes(wordBytes.data(), tcnx.wordLen_, QuickFile::POSEND);
+    wordFile_->flush();
     explanationFile_->writeRawBytes(explanStr.c_str(), tcnx.explanLen_, QuickFile::POSEND);
+    explanationFile_->flush();
 
     QByteArray wBytes = contextToByteArray(tcnx);
     contextFile_->writeByteArray(wBytes, wBytes.length(), QuickFile::POSEND);
+    contextFile_->flush();
 
     //dic_.emplace(word.toLocal8Bit(), tcnx);
-    auto pair(dic_.emplace(word.toLocal8Bit(), tcnx));
-    if(pair.second)
-    {
-        dicArray_.emplace_back(pair.first);
-    }
+    const auto& pair = dic_.emplace(word.toLocal8Bit(), tcnx);
 
-    emit SigAddNewWord();
+    emit SigAddNewWord(pair.first);
 }
 
 void QuickTranslateStorage::setContext(const QByteArray &bArray, int offset, QuickTranslateStorage::Context &context)
@@ -226,6 +222,11 @@ void QuickTranslateStorage::checkSyncStatus()
     }
 }
 
+bool QuickTranslateStorage::isSingleWord(const QString & inStr)
+{
+    QRegExp reg("^[a-zA-Z]+$");
+    return reg.exactMatch(inStr);
+}
 
 
 TestClass::TestClass(QObject *parent):

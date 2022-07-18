@@ -68,8 +68,6 @@ void QuickTranslateNet::sendTranslateRequest(const QString &words)
         Baidu_TranslatePrepareQuery(url, tWords);
     }
 
-
-
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/x-www-form-urlencoded"));
     netManager_->get(request);

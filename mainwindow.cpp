@@ -128,6 +128,8 @@ void MainWindow::initToolView()
 
     QuickTranslateDicModel* dicModel = new QuickTranslateDicModel(this);
     ui->tableViewDictionary->setModel(dicModel);
+    ui->tableViewDictionary->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);
+    //ui->tableViewDictionary->horizontalHeader()->setSortIndicator(2, Qt::DescendingOrder);
 
     ui->tableWidgetSetting->hide();
 
