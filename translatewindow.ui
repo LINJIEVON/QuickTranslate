@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TranslateWindow</class>
+ <widget class="QWidget" name="TranslateWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>258</width>
+    <height>267</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>快捷翻译</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/***************
+     all
+***************/
+*{
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+
+/************************
+        searchButton
+*************************/
+#searchButton{ 
+	width: 50px;
+	height: 31px;
+	border: 1px solid;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(224, 227, 232);
+}
+
+#searchButton:hover{
+	color: white;
+	background-color: rgb(108, 108, 108);
+}
+
+#searchButton:pressed{
+	color: white;
+	font-weight: bold;
+	background-color: rgb(0, 170, 255);
+}
+
+/************************
+        searchEdit
+*************************/
+#searchEdit{
+	padding: 4px;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(248, 244, 241);
+}
+
+#searchEdit:hover{
+	background-color: rgb(108, 108, 108);
+}
+
+#searchEdit:focus{
+	border: 1px solid;
+	background-color: rgb(255, 255, 255);
+}
+
+/************************
+        resultPlainTextEdit
+*************************/
+#resultPlainTextEdit{
+	border: 1px solid;
+	border-radius: 10px;
+	padding:2px;
+}
+
+/************************
+        frame
+*************************/
+#frame{
+	background-color: rgb(255, 255, 255);
+	border: none;
+	border-radius: 10px;
+}
+
+/*********************
+    frame_2
+*********************/
+
+#frame_2{
+	border: 1px solid;
+	border-radius: 10px;
+	padding-top: 1px;
+	padding-bottom: 1px;	
+	background-color: rgb(248, 244, 241);
+}
+
+
+
+
+
+
+
+
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>5</number>
+   </property>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+   <property name="leftMargin">
+    <number>1</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>1</number>
+   </property>
+   <property name="bottomMargin">
+    <number>1</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="topMargin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="acceptDrops">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="searchButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="traslateIcon.qrc">
+               <normaloff>:/image/image/search_4_aigei_com.png</normaloff>:/image/image/search_4_aigei_com.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="searchEdit">
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="dragEnabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="resultPlainTextEdit">
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="plainText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="traslateIcon.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>searchEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>TranslateWindow</receiver>
+   <slot>onSearchButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>429</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TranslateWindow</receiver>
+   <slot>onSearchButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>460</x>
+     <y>17</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>458</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onSearchButtonClicked()</slot>
+  <slot>onAddButtonClicked()</slot>
+ </slots>
+</ui>

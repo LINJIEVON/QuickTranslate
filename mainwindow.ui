@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>673</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>快捷翻译</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*设置个内边距，按下键的时候里边的内容就不会跳动力*/
+
+/******************************
+          QToolButton
+*******************************/
+QToolButton{
+	width:120;
+	height:50;
+	padding-top: 5px;
+	border:none;
+	border-left: 2px solid rgb(180, 180, 180);
+	background-color: rgb(180, 180, 180);
+	font: 9pt &quot;微软雅黑&quot;;
+	color:rgb(38, 38, 38);
+}
+
+QToolButton:hover{
+	border:none;
+	border-left: 2px solid rgb(212, 212, 212);
+	background-color: rgb(212, 212, 212);
+	color: rgb(95, 95, 95);
+}
+
+
+QToolButton:pressed{
+	border:none;
+	border-left: 2px solid rgb(65, 205, 255);
+	background-color: rgb(95, 95, 95);
+	color:rgb(212, 212, 212);
+}
+
+QToolButton:checked{
+	border:none;
+	border-left: 2px solid rgb(65, 205, 255);
+	background-color: rgb(95, 95, 95);
+	color:rgb(212, 212, 212);
+}
+
+QToolButton:unchecked{
+	width:120;
+	height:50;
+	padding-top: 5px;
+	border:none;
+	border-left: 2px solid rgb(180, 180, 180);
+	background-color: rgb(180, 180, 180);
+	font: 9pt &quot;微软雅黑&quot;;
+	color:rgb(38, 38, 38);
+}
+
+/******************************
+          frame
+*******************************/
+#frame{
+	border:none;
+	/*border-right:0px;*/
+	background-color: rgb(180, 180, 180);
+}
+
+/******************************
+          tableWidget
+*******************************/
+QHeaderView::section{
+    color: white;
+	border: none;
+	border-bottom: 1px solid;
+	background-color: rgb(184, 184, 184);
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+/******************************
+          frame_2
+*******************************/
+#frame_2{
+	border:none;
+}
+
+/******************************
+          frameTranslate
+*******************************/
+#frameTranslate{
+	border:none;
+}
+
+#frame_4{
+	border:none;
+}
+
+#searchButton{
+	width: 50px;
+	height: 25px;
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+#searchEdit{
+	height: 27px;
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+#resultPlainTextEdit{
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>1</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="toolButtonDictionary">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>字典</string>
+           </property>
+           <property name="icon">
+            <iconset resource="traslateIcon.qrc">
+             <normaloff>:/image/image/dic_2_aigei_com.png</normaloff>:/image/image/dic_2_aigei_com.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>false</bool>
+           </property>
+           <property name="arrowType">
+            <enum>Qt::NoArrow</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonTranslate">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>翻译</string>
+           </property>
+           <property name="icon">
+            <iconset resource="traslateIcon.qrc">
+             <normaloff>:/image/image/search_4_aigei_com.png</normaloff>:/image/image/search_4_aigei_com.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>false</bool>
+           </property>
+           <property name="arrowType">
+            <enum>Qt::NoArrow</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonSetting">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>设置</string>
+           </property>
+           <property name="icon">
+            <iconset resource="traslateIcon.qrc">
+             <normaloff>:/image/image/setting_aigei_com.png</normaloff>:/image/image/setting_aigei_com.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>false</bool>
+           </property>
+           <property name="arrowType">
+            <enum>Qt::NoArrow</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_2">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QTableView" name="tableViewDictionary">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">/***********************
+    item
+***********************/
+QTableView::item{
+	border: none;
+	font: 9pt &quot;微软雅黑&quot;;
+}
+
+QTableView::item:selected{
+	border: none;
+	color: black;
+	font: 9pt &quot;微软雅黑&quot;;
+	background-color: rgb(0, 255, 255);
+}
+
+/***********************
+    header
+***********************/
+QHeaderView::section{
+	border: none;
+    color: white;
+	border:none;
+	border-bottom:1px solid;
+	background-color: rgb(184, 184, 184);
+	font: 12pt &quot;微软雅黑&quot;;
+}
+
+/***********************
+    tale corner button
+***********************/
+QTableCornerButton::section{
+	border:none;
+	border-bottom:1px solid;
+	border-right:1px solid;
+	background-color: rgb(0, 255, 255);
+}
+</string>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="showDropIndicator" stdset="0">
+            <bool>false</bool>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <property name="textElideMode">
+            <enum>Qt::ElideRight</enum>
+           </property>
+           <property name="sortingEnabled">
+            <bool>false</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+           <property name="cornerButtonEnabled">
+            <bool>false</bool>
+           </property>
+           <attribute name="horizontalHeaderHighlightSections">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderHighlightSections">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderStretchLastSection">
+            <bool>false</bool>
+           </attribute>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameTranslate">
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame_4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="acceptDrops">
+                 <bool>true</bool>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetDefaultConstraint</enum>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="searchButton">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>翻译</string>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="searchEdit">
+                   <property name="focusPolicy">
+                    <enum>Qt::StrongFocus</enum>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="dragEnabled">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="resultPlainTextEdit">
+                <property name="acceptDrops">
+                 <bool>false</bool>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="plainText">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tableWidgetSetting">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::NoSelection</enum>
+           </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>新建行</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>新建行</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>操作</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>按键</string>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string>快捷翻译</string>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string>Ctrl+Shift+F</string>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>673</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionMainDictionary">
+   <property name="icon">
+    <iconset resource="traslateIcon.qrc">
+     <normaloff>:/image/image/T_JPEG.webp</normaloff>:/image/image/T_JPEG.webp</iconset>
+   </property>
+   <property name="text">
+    <string>字典</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="traslateIcon.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>searchButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotSearchButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotSearchButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>671</x>
+     <y>142</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slotSearchButtonClicked()</slot>
+  <slot>slotAddButtonClicked()</slot>
+ </slots>
+</ui>

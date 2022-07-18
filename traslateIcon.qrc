@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/T_icon.webp</file>
+        <file>image/T_JPEG.webp</file>
+        <file>image/dic_2_aigei_com.png</file>
+        <file>image/dic_aigei_com.png</file>
+        <file>image/search_2aigei_com.png</file>
+        <file>image/search_3_aigei_com.png</file>
+        <file>image/search_4_aigei_com.png</file>
+        <file>image/search_aigei_com.png</file>
+        <file>image/setting_aigei_com.png</file>
+        <file>image/translate_2_aigei_com.png</file>
+        <file>image/translate_aigei_com.png</file>
+        <file>image/icon.png</file>
+    </qresource>
+</RCC>
